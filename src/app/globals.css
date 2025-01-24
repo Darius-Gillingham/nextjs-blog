@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+.applet {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease-in-out;
+}
+
+.applet:hover {
+  transform: scale(1.05);
+}
+
+.applet img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.applet h3 {
+  font-size: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.applet p {
+  font-size: 0.875rem;
+  color: #666;
+}

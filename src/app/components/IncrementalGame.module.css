@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+
+  
+  #balance {
+    margin-top: 20px;
+  }
+  
+  #assets {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .asset-item {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .asset-item img {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+  }
+  
+  .asset-button {
+    margin-right: 10px;
+  }
+  
+  .asset-progress-bar {
+    width: 200px;
+    height: 20px;
+    border: 1px solid #000;
+    margin-top: 10px;
+  }
+  
+  .asset-progress-bar .progress {
+    width: 0%;
+    height: 100%;
+    background-color: green;
+  }
+  
+  .asset-count {
+    margin-right: 20px;
+  }
+  
+  .asset-return {
+    margin-right: 10px;
+  }
+  
+  .asset-profit {
+    margin-left: 10px;
+  }
+  

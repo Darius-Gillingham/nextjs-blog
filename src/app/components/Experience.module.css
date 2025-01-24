@@ -1,0 +1,21 @@
+.work-experience {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ddd;
+  }
+  
+  .work-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+  
+  .contacts ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .contacts li {
+    margin: 5px 0;
+  }
+  
