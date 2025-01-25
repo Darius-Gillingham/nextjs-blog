@@ -11,7 +11,6 @@ import "./globals.css";
 const componentMap: Record<string, React.ComponentType<any>> = {
   Calculator: dynamic(() => import("@/app/components/Calculator")),
   TimeManager: dynamic(() => import("@/app/components/TimeManager")),
-  IncrementalGame: dynamic(() => import("@/app/components/IncrementalGame")),
   Experience: dynamic(() => import("@/app/components/Experience")),
 };
 
