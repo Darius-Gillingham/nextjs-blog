@@ -51,7 +51,8 @@ export default function Home() {
             </div>
           </div>
         ) : (
-          <p className="text-center">Click on a section to view details.</p>
+          <p className="text-center">Welcome. My name is Darius Gillingham, I'm a 3rd year computer science student
+          at University of the Fraser. /n  This is my portfolio website to showcase my projects built in a NextJS react framework. /n above you can see a series of tabs the will bring you to data visualizations, games, tools and my work experience.</p>
         )}
       </section>
     </div>

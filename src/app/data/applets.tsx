@@ -1,6 +1,11 @@
 export const applets = {
     "Data Visualizations": [
-  
+      {
+        title: "Depth-First and Breadth-first Search",
+        description: "Visualize Depth-First and Breadth-First Search algorithms using a node based search graph.",
+        image: "/assets/TreeIcon.jpg",
+        link: "GraphVisualizer", // This links to the CoordinateForm component
+      },
     ],
     "Games": [
    
@@ -18,6 +23,14 @@ export const applets = {
         image: "/assets/TimeManagerLogo.jpg",
         link: "TimeManager",
       },
+
+      {
+        title: "Coordinate Converter",
+        description: "A simple Coordinate Conversion tool.",
+        image: "/assets/CoordsIcon.jpg",
+        link: "CoordinateForm", // This links to the CoordinateForm component
+      },
+      
     ],
     "Experience": [
       {

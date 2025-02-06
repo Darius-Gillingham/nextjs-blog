@@ -6,33 +6,35 @@ import { applets } from "./data/applets"; // Import applets data
 import dynamic from "next/dynamic"; // For dynamic component imports
 import { experienceData } from "./data/experienceData"; // Import experience data
 import "./globals.css";
+import CoordinateForm from "./components/CoordinateForm";
+import GraphVisualizer from "./components/GraphVisualizer";
 
 // Map link values to dynamically imported components
 const componentMap: Record<string, React.ComponentType<any>> = {
   Calculator: dynamic(() => import("@/app/components/Calculator")),
   TimeManager: dynamic(() => import("@/app/components/TimeManager")),
   Experience: dynamic(() => import("@/app/components/Experience")),
+  CoordinateForm: dynamic(() => import("@/app/components/CoordinateForm")),
+  GraphVisualizer: dynamic(() => import("@/app/components/GraphVisualizer")),
 };
 
 export default function Layout() {
   const [content, setContent] = useState<string | null>(null); // Track selected section
   const [appletComponent, setAppletComponent] = useState<React.ReactNode | null>(null);
 
-  // Section categories
   const sections = ["Data Visualizations", "Games", "Tools", "Experience"];
 
   const handleAppletClick = (link: string) => {
     console.log("Selected applet link:", link); // Debugging line
-  
+    
     if (content === "Experience") {
       const Component = componentMap["Experience"];
       if (Component) {
         const experience = experienceData[link as keyof typeof experienceData];
         if (experience) {
-          // Use link as a key to ensure the component remounts
           setAppletComponent(
             <Component
-              key={link}  // Force remount of the Experience component on new selection
+              key={link}
               title={experience.title}
               imageSrc={experience.imageSrc}
               description={experience.description}
@@ -46,26 +48,36 @@ export default function Layout() {
         console.error("Component not found for Experience");
       }
     } else if (componentMap[link]) {
-      setAppletComponent(React.createElement(componentMap[link])); // Render the component as JSX
+      setAppletComponent(React.createElement(componentMap[link]));
     } else {
       console.error("Component not found for link:", link);
       setAppletComponent(null); // Reset if no valid link is found
     }
   };
-  
-  
-  
+
+  const resetContent = () => {
+    setContent(null); // Reset content to null (welcome page)
+    setAppletComponent(null); // Reset applet component
+  };
 
   return (
     <html lang="en">
       <body className="antialiased bg-gray-900 text-white">
         {/* Fixed Header */}
-        <header className="fixed top-0 left-0 right-0 bg-gray-900 p-6 shadow-lg z-10">
-          <h1 className="text-3xl font-bold text-center">Darius Portfolio</h1>
+        <header className="fixed top-0 left-0 right-0 bg-gray-900 p-6 shadow-lg z-10 flex items-center justify-between">
+          <h1 className="text-3xl font-bold text-center">   Darius's Portfolio</h1>
+          {/* Image-based button to reset content */}
+          <button onClick={resetContent} className="ml-4 p-2 rounded-full hover:scale-105 transition-transform">
+            <img
+              src="/assets/HomeLogo.jpg"
+              alt="Home"
+              className="w-8 h-8 rounded-full border-2 border-white"
+            />
+          </button>
         </header>
-
+  
         {/* Section selection grid */}
-        <section className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-20">
+        <section className="grid grid-cols-2 sm:grid-cols-4 gap-10 mt-24">
           {sections.map((section) => (
             <div
               key={section}
@@ -76,7 +88,7 @@ export default function Layout() {
             </div>
           ))}
         </section>
-
+  
         {/* Dynamic Content Below Header */}
         <main className="pt-32 p-6">
           {content ? (
@@ -102,9 +114,30 @@ export default function Layout() {
               </div>
             </div>
           ) : (
-            <p className="text-center">Click on a section to view details.</p>
+            <div>
+              <p className="text-center">
+                Welcome. My name is Darius Gillingham, I'm a 3rd year computer
+                science student at University of the Fraser. This is my portfolio
+                website to showcase my projects built in a NextJS react framework.
+                Above you can see a series of tabs that will bring you to data
+                visualizations, games, tools, and my work experience.
+              </p>
+              {/* Add the images here */}
+              <div className="mt-10 flex justify-center gap-6">
+                <img
+                  src="/assets/me1.jpg"
+                  alt="Me 1"
+                  className="rounded-lg shadow-lg w-1/3"
+                />
+                <img
+                  src="/assets/me2.jpg"
+                  alt="Me 2"
+                  className="rounded-lg shadow-lg w-1/3"
+                />
+              </div>
+            </div>
           )}
-
+  
           {/* Render the selected applet component */}
           {appletComponent && (
             <section className="mt-10 p-6 bg-gray-800 rounded-lg shadow-lg">
